@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Kids-Can Cancer Foundation</title>
+    <meta name="description"
+        content="Discover the programs and services Kids-Can Cancer Foundation provides to support children and families.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0 4rem;
+            color: white;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+                <div class="logo-tagline">be aware, show you care</div>
+            </a>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="stories.html" class="nav-link">Heroes</a></li>
+                <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="apply.html" class="nav-link">Get Help</a></li>
+                <li class="nav-item"><a href="donate.html" class="nav-link btn btn-primary"
+                        style="color: white; padding: 0.5rem 1.5rem;">Donate</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="section-title" style="color: white; margin-bottom: 0.5rem;">Our Programs & Services</h1>
+            <p class="hero-subtitle">Providing holistic support for children and their families.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-hand-holding-medical service-icon"></i>
+                    <h3>Medical Assistance</h3>
+                    <p>We provide financial support for life-saving treatments, medications, and specialized care that
+                        families might otherwise struggle to afford.</p>
+                    <a href="apply.html" class="btn btn-outline">Apply for Help</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-box-open service-icon"></i>
+                    <h3>Care Packages</h3>
+                    <p>Essential care items, toys, and comfort kits for children undergoing treatment in hospitals,
+                        bringing a bit of joy to their difficult days.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-users-cog service-icon"></i>
+                    <h3>Family Support</h3>
+                    <p>Emotional support, counseling, and community-building events to help families stay strong and
+                        connected during the journey.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-graduation-cap service-icon"></i>
+                    <h3>Educational Grants</h3>
+                    <p>Ensuring that children's education doesn't stop during treatment by providing resources and
+                        grants for tutoring and school needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo footer-logo">
+                        <div class="logo-main">
+                            <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                        </div>
+                        <div class="logo-tagline">be aware, show you care</div>
+                    </a>
+                    <p>Dedicated to fighting children's cancer and supporting families in need.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="stories.html">Our Kids</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> +27 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kidscanfoundation/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kidscanfoundation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://za.linkedin.com/company/kids-can-cancer-foundation" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kids-Can Cancer Foundation. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

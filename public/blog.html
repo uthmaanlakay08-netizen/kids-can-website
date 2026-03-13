@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & News | Kids-Can Cancer Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0 4rem;
+            color: white;
+            text-align: center;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .blog-img-container {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .blog-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card:hover .blog-img-container img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .blog-content h3 {
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+                <div class="logo-tagline">be aware, show you care</div>
+            </a>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="stories.html" class="nav-link">Heroes</a></li>
+                <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="apply.html" class="nav-link">Get Help</a></li>
+                <li class="nav-item"><a href="donate.html" class="nav-link btn btn-primary"
+                        style="color: white; padding: 0.5rem 1.5rem;">Donate</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="section-title" style="color: white; margin-bottom: 0.5rem;">Latest News & Updates</h1>
+            <p class="hero-subtitle">Keeping you informed about our journey and the lives we touch.</p>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog posts will be loaded here -->
+                <div class="blog-card">
+                    <div class="blog-img-container">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="New Fundraising Goals">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">March 15, 2026</span>
+                        <h3>New Fundraising Milestone: $5M for Specialized Care</h3>
+                        <p class="blog-excerpt">Thanks to our incredible community, we've reached a major milestone that
+                            allows us to expand our specialized care programs...</p>
+                        <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img-container">
+                        <img src="https://images.unsplash.com/photo-1602664511454-1f9167b99818?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Community Hero">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">February 28, 2026</span>
+                        <h3>Brave Little Timmy: A Story of Unwavering Courage</h3>
+                        <p class="blog-excerpt">Meet 7-year-old Timmy, whose smile lights up the hospital ward even on
+                            his toughest days of treatment...</p>
+                        <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img-container">
+                        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Volunteer Highlight">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-date">February 10, 2026</span>
+                        <h3>Volunteer Spotlight: Making Magic in the Ward</h3>
+                        <p class="blog-excerpt">Our volunteers are the heartbeat of Kids-Can. This month, we're
+                            highlighting the incredible work of Sarah...</p>
+                        <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo footer-logo">
+                        <div class="logo-main">
+                            <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                        </div>
+                        <div class="logo-tagline">be aware, show you care</div>
+                    </a>
+                    <p>Dedicated to fighting children's cancer and supporting families in need.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="stories.html">Our Kids</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <!-- ... other columns same as services.html ... -->
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> hello@kidscan.org</p>
+                    <p><i class="fas fa-phone"></i> 0833529842</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kidscanfoundation/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kidscanfoundation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Kids-Can Cancer Foundation. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

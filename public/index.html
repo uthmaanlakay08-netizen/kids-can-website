@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids-Can Cancer Foundation - Fighting Children's Cancer</title>
+    <meta name="description"
+        content="Giving children with cancer a fighting chance. Join Kids-Can Cancer Foundation to support kids, raise funds, and assist families in need.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar hero-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+                <div class="logo-tagline">be aware, show you care</div>
+            </a>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="stories.html" class="nav-link">Heroes</a></li>
+                <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="apply.html" class="nav-link">Get Help</a></li>
+                <li class="nav-item"><a href="donate.html" class="nav-link btn btn-primary"
+                        style="color: white; padding: 0.5rem 1.5rem;">Donate</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero new-hero">
+        <div class="hero-overlay-gradient"></div>
+        <div class="container hero-content-new">
+            <div class="hero-main-visual">
+                <img src="hero-center-logo.jpg" alt="Kids-Can Logo" class="hero-brand-logo">
+                <img src="hero-title-graphic.png" alt="Kids-Can Padel Warrior" class="hero-title-graphic">
+            </div>
+            <a href="donate.html" class="btn-donate-hero pulse-animation">DONATE NOW <i class="fas fa-heart"></i></a>
+        </div>
+    </section>
+
+    <div id="dynamic-layout">
+        <!-- About Us Section -->
+        <section id="about" class="about section-padding">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <!-- Placeholder for About Image -->
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Care and Support" loading="lazy">
+                    </div>
+                    <div class="about-text">
+                        <h2 class="section-title" data-cms-id="home.about.title">Why We Are Here</h2>
+                        <p data-cms-id="home.about.text1">Our mission is to bring hope, dignity, and support to children
+                            battling cancer by improving their quality of life, providing essential care, and standing
+                            beside families during their most difficult journey.</p>
+                        <p data-cms-id="home.about.text2">We achieve this by providing financial assistance for medical
+                            treatments, supplying essential care packages, and building a supportive community that
+                            ensures
+                            no child or family has to fight alone.</p>
+                        <a href="about.html" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet Our Kids / Stories Section -->
+        <section id="stories" class="stories section-padding">
+            <div class="container">
+                <h2 class="section-title text-center">Meet Our <span class="highlight">Brave Heroes</span></h2>
+                <p class="section-subtitle text-center">Real stories of courage, hope, and resilience.</p>
+
+                <div class="stories-grid" id="homeHeroesGrid">
+                    <!-- Loaded dynamically by script.js -->
+                    <p class="text-center" style="width: 100%;">Loading heroes...</p>
+                </div>
+
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="stories.html" class="btn btn-outline-dark">View & Search All Heroes <i
+                            class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Impact Section -->
+        <section id="impact" class="impact section-padding">
+            <div class="container">
+                <h2 class="section-title text-center text-white">Our Collective Impact</h2>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <i class="fas fa-glass-cheers"></i>
+                        <span class="impact-number" data-cms-id="home.impact.stat1">10+</span>
+                        <span class="impact-label" data-cms-id="home.impact.label1">Years Active</span>
+                    </div>
+                    <div class="impact-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span class="impact-number" data-cms-id="home.impact.stat2">$5M+</span>
+                        <span class="impact-label" data-cms-id="home.impact.label2">Funds Raised</span>
+                    </div>
+                    <div class="impact-item">
+                        <i class="fas fa-user-friends"></i>
+                        <span class="impact-number" data-cms-id="home.impact.stat3">2,500+</span>
+                        <span class="impact-label" data-cms-id="home.impact.label3">Children Helped</span>
+                    </div>
+                    <div class="impact-item">
+                        <i class="fas fa-globe-africa"></i>
+                        <span class="impact-number" data-cms-id="home.impact.stat4">50+</span>
+                        <span class="impact-label" data-cms-id="home.impact.label4">Communities</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Movement / Events Section -->
+        <section id="movement" class="movement-section">
+            <!-- Video Background Moved Here -->
+            <video autoplay muted loop playsinline class="movement-video-bg">
+                <source src="Untitled design (3).mp4" type="video/mp4">
+            </video>
+            <div class="movement-overlay-gradient"></div>
+
+            <div class="container movement-container">
+                <h2 class="movement-title">More Than a Game. A Movement.</h2>
+
+                <div class="movement-hero-text">
+                    <h3 class="movement-huge-text">PLAY</h3>
+                    <h3 class="movement-huge-text-outlined">FOR THE</h3>
+                    <h3 class="movement-huge-text-outlined">3-5</h3>
+
+                    <!-- Padel Graphic Placeholder - re-using the one we have or text -->
+                    <img src="hero-title-graphic.png" alt="PADEL" class="movement-padel-graphic">
+                </div>
+
+                <div class="movement-cards">
+                    <!-- Card 1 -->
+                    <div class="movement-card">
+                        <div class="card-icon"><i class="fas fa-table-tennis"></i></div>
+                        <!-- Icon placeholder for Racket -->
+                        <h4>Play With Purpose</h4>
+                        <p>This movement brings communities together across cities and provinces. From local courts to
+                            national events, we are building an annual movement that grows stronger every year.</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="movement-card">
+                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                        <h4>United Across South Africa</h4>
+                        <p>This movement brings communities together across cities and provinces. From local courts to
+                            national events, we are building an annual movement that grows stronger every year.</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="movement-card">
+                        <div class="card-icon"><i class="fas fa-heart"></i></div>
+                        <h4>Creating Real Impact</h4>
+                        <p>Funds raised through this movement directly support the work of Kids Can Cancer Foundation —
+                            helping children with cancer, supporting families, and providing care when it's needed most.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="movement-buttons-container">
+                    <a href="events.html" class="btn btn-outline-white">View All Events</a>
+                    <a href="enter-team.html" class="btn btn-primary-yellow">Enter Team</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donate" class="donate section-padding">
+            <div class="container text-center">
+                <div class="donate-card">
+                    <h2 class="section-title">Your Donation Can Save a Life</h2>
+                    <p>Every contribution, big or small, goes directly to providing treatment, care, and hope for
+                        children
+                        battling cancer.</p>
+                    <div class="donation-options">
+                        <button class="donate-amount">$25</button>
+                        <button class="donate-amount">$50</button>
+                        <button class="donate-amount">$100</button>
+                        <button class="donate-amount">Custom</button>
+                    </div>
+                    <a href="https://givepulse.live/campaign-meta/26954841-f092-43aa-b14a-0d1ca01fe09c" target="_blank"
+                        class="btn btn-primary btn-lg donate-btn">Donate Securely</a>
+                    <p class="secure-msg"><i class="fas fa-lock"></i> Secure Payment · Tax Deductible</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Latest Updates / Facebook Feed -->
+    <section id="updates" class="updates section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Latest Updates</h2>
+            <p class="section-subtitle text-center">Follow our journey on Facebook</p>
+
+            <div id="facebook-feed" class="updates-grid">
+                <!-- Posts loaded via JS -->
+                <div class="text-center w-100">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    <p>Loading updates...</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="https://www.facebook.com/kidscanfoundation/" target="_blank" class="btn btn-outline-dark"><i
+                        class="fab fa-facebook"></i> View Page</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer / Partner Section -->
+    <section class="partner section-padding">
+        <div class="container text-center">
+            <h2 class="section-title">Become a Partner</h2>
+            <p>We are looking for compassionate businesses and individuals to join us as sponsors and partners. Let's
+                make a bigger difference together.</p>
+            <a href="partner.html" class="btn btn-outline-dark">Partner With Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo footer-logo">
+                        <div class="logo-main">
+                            <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                        </div>
+                        <div class="logo-tagline">be aware, show you care</div>
+                    </a>
+                    <p>Dedicated to fighting children's cancer and supporting families in need.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#stories">Our Kids</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="https://givepulse.live/campaign-meta/26954841-f092-43aa-b14a-0d1ca01fe09c"
+                                target="_blank">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 0833529842</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kidscanfoundation/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kidscanfoundation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://za.linkedin.com/company/kids-can-cancer-foundation" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p>&copy; 2026 Kids-Can Cancer Foundation. All Rights Reserved.</p>
+                <a href="admin.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.8rem;">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <!-- Analytics -->
+    <script src="js/analytics.js"></script>
+    <!-- Visual CMS -->
+    <script src="js/cms.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

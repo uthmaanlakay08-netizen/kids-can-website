@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah",
+    "age": 7,
+    "diagnosis": "Leukemia",
+    "story": "Diagnosed with Leukemia at 5, Sarah's smile never fades. She loves painting and dreams of becoming an artist. Her resilience in the face of chemotherapy has inspired her entire community.",
+    "image": "https://images.unsplash.com/photo-1543867629-9b939c36868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Liam",
+    "age": 10,
+    "diagnosis": "Osteosarcoma",
+    "story": "A baseball enthusiast fighting Osteosarcoma. His determination to return to the field inspires us all. Liam never misses a game on TV, even on his toughest treatment days.",
+    "image": "https://images.unsplash.com/photo-1481144577828-569527ec56d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Zoe",
+    "age": 5,
+    "diagnosis": "Neuroblastoma",
+    "story": "Small but mighty. Zoe helps other kids in the ward feel brave with her storytelling. She carries her cape everywhere she goes, reminding everyone that not all heroes wear uniforms.",
+    "image": "https://images.unsplash.com/photo-1519238360706-5384bc133486?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 4,
+    "name": "James",
+    "age": 12,
+    "diagnosis": "Lymphoma",
+    "story": "James is a budding scientist who wants to cure cancer one day. He spends his hospital time reading biology books and asking doctors tough questions.",
+    "image": "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 5,
+    "name": "Emily",
+    "age": 8,
+    "diagnosis": "Brain Tumor",
+    "story": "Emily loves to dance. Despite her diagnosis, she organizes mini dance-offs in the hospital hallway to lift everyone's spirits.",
+    "image": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 6,
+    "name": "Michael",
+    "age": 6,
+    "diagnosis": "Wilms Tumor",
+    "story": "Michael is obsessed with dinosaurs. 'I'm as tough as a T-Rex,' he says. His bravery is truly prehistoric in scale.",
+    "image": "https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+  }
+]

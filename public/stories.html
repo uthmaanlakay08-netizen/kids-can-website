@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Brave Heroes | Kids-Can Cancer Foundation</title>
+    <meta name="description"
+        content="Read the inspiring stories of the children we support. Search for specific heroes and learn about their journey.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+                <div class="logo-tagline">be aware, show you care</div>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="https://givepulse.live/campaign-meta/26954841-f092-43aa-b14a-0d1ca01fe09c"
+                        target="_blank" class="btn btn-primary nav-btn">Donate Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="stories-header">
+        <div class="container text-center">
+            <h1 class="stories-page-title">Meet Our <span class="highlight">Heroes</span></h1>
+            <p class="stories-page-subtitle">Every child has a story of courage. Read them, share them, support them.
+            </p>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="heroSearch" placeholder="Search by name, diagnosis, or story..."
+                    onkeyup="searchHeroes()">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid Section -->
+    <section class="stories-list-section section-padding">
+        <div class="container">
+            <div id="heroesGrid" class="stories-grid">
+                <!-- Javascript will populate this -->
+                <div class="loading-sc">Loading stories...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo footer-logo">
+                        <div class="logo-main">
+                            <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                        </div>
+                        <div class="logo-tagline">be aware, show you care</div>
+                    </a>
+                    <p>Dedicated to fighting children's cancer and supporting families in need.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="stories.html">Our Kids</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> +27 12 345 6789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kidscanfoundation/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kidscanfoundation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://za.linkedin.com/company/kids-can-cancer-foundation" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p>&copy; 2026 Kids-Can Cancer Foundation. All Rights Reserved.</p>
+                <a href="admin.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.8rem;">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inline script for search functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchHeroes();
+        });
+
+        const heroesGrid = document.getElementById('heroesGrid');
+
+        async function fetchHeroes(query = '') {
+            try {
+                let queryBuilder = window.supabaseClient
+                    .from('heroes')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (query) {
+                    // Simple search implementation
+                    // Note: Supabase text search syntax is different, but for now we can use ilike for simplicity
+                    // or just filter client side if dataset is small. 
+                    // Let's try an 'or' filter for name/diagnosis
+                    queryBuilder = queryBuilder.or(`name.ilike.%${query.toLowerCase()}%,diagnosis.ilike.%${query.toLowerCase()}%,story.ilike.%${query.toLowerCase()}%`);
+                }
+
+                const timeoutPromise = new Promise(r => setTimeout(() => r({ timeout: true }), 5000));
+                const result = await Promise.race([queryBuilder, timeoutPromise]);
+
+                if (result.timeout) {
+                    console.warn('Heroes Fetch: Timed out.');
+                    heroesGrid.innerHTML = '<p class="error-msg">Loading is taking longer than expected. Please refresh the page.</p>';
+                    return;
+                }
+
+                const { data: heroes, error } = result;
+
+                if (error) throw error;
+                renderHeroes(heroes);
+            } catch (error) {
+                console.error('Error fetching heroes:', error);
+                heroesGrid.innerHTML = '<p class="error-msg">Failed to load stories. Please try again later.</p>';
+            }
+        }
+
+        function renderHeroes(heroes) {
+            heroesGrid.innerHTML = '';
+
+            if (heroes.length === 0) {
+                heroesGrid.innerHTML = '<p class="no-results">No heroes found matching your search. Try another name.</p>';
+                return;
+            }
+
+            heroes.forEach(hero => {
+                const card = document.createElement('div');
+                card.className = 'story-card';
+                card.innerHTML = `
+                    <div class="story-img-container">
+                         <img src="${hero.image_url || 'hero-center-logo.jpg'}" alt="${hero.name}" loading="lazy">
+                    </div>
+                    <div class="story-content">
+                        <h3>${hero.name}, ${hero.age || ''}</h3>
+                        <p class="diagnosis-tag">${hero.diagnosis || ''}</p>
+                        <p class="story-summary">${hero.story || ''}</p>
+                        <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                heroesGrid.appendChild(card);
+            });
+        }
+
+        let debounceTimer;
+        function searchHeroes() {
+            clearTimeout(debounceTimer);
+            const query = document.getElementById('heroSearch').value;
+            debounceTimer = setTimeout(() => {
+                fetchHeroes(query);
+            }, 300);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Kids-Can Cancer Foundation</title>
+    <meta name="description"
+        content="Join our upcoming events or see highlights from our past initiatives. Be part of the movement against childhood cancer.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+
+    <style>
+        .events-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0 4rem;
+            color: white;
+            text-align: center;
+        }
+
+        .events-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .event-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .event-tab {
+            padding: 10px 30px;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .event-tab.active,
+        .event-tab:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-media {
+            height: 200px;
+            background-color: #eee;
+            position: relative;
+        }
+
+        .event-media img,
+        .event-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-date {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .event-title {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .event-location {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-desc {
+            margin-bottom: 1.5rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .event-btn {
+            align-self: flex-start;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+                <div class="logo-tagline">be aware, show you care</div>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="stories.html" class="nav-link">Heroes</a></li>
+                <li class="nav-item"><a href="events.html" class="nav-link active">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="events-header">
+        <div class="container">
+            <h1 class="section-title" style="color: white; margin-bottom: 0.5rem;">Events & Campaigns</h1>
+            <p style="font-size: 1.2rem;">Join the movement. Make a difference.</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="events-intro">
+                <p>From padel tournaments to community fundraisers, our events are designed to bring people together for
+                    a cause. Check out what's coming up or see highlights from our past successes.</p>
+            </div>
+
+            <div class="event-tabs">
+                <button class="event-tab active" onclick="filterEvents('upcoming')">Upcoming Events</button>
+                <button class="event-tab" onclick="filterEvents('past')">Past Events</button>
+            </div>
+
+            <div id="eventsContainer" class="events-grid">
+                <!-- Javascript will populate this -->
+                <p style="width: 100%; text-align: center;">Loading events...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo footer-logo">
+                        <div class="logo-main">
+                            <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                        </div>
+                        <div class="logo-tagline">be aware, show you care</div>
+                    </a>
+                    <p>Dedicated to fighting children's cancer and supporting families in need.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="stories.html">Our Kids</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 0833529842</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kidscanfoundation/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kidscanfoundation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://za.linkedin.com/company/kids-can-cancer-foundation" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p>&copy; 2026 Kids-Can Cancer Foundation. All Rights Reserved.</p>
+                <a href="admin.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.8rem;">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let allEvents = [];
+        let currentFilter = 'upcoming';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            fetchEvents();
+        });
+
+        async function fetchEvents() {
+            const container = document.getElementById('eventsContainer');
+
+            try {
+                const { data, error } = await window.supabaseClient
+                    .from('events')
+                    .select('*')
+                    .order('date', { ascending: false }); // Newest first
+
+                if (error) throw error;
+
+                allEvents = data;
+                renderEvents();
+            } catch (e) {
+                console.error("Error loading events", e);
+                container.innerHTML = '<p class="text-center">Could not load events.</p>';
+            }
+        }
+
+        function filterEvents(type) {
+            currentFilter = type;
+            // Update Tab UI
+            document.querySelectorAll('.event-tab').forEach(el => {
+                if (el.textContent.toLowerCase().includes(type)) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+            renderEvents();
+        }
+
+        function renderEvents() {
+            const container = document.getElementById('eventsContainer');
+            container.innerHTML = '';
+
+            const today = new Date().toISOString().split('T')[0];
+
+            const filtered = allEvents.filter(event => {
+                if (currentFilter === 'upcoming') {
+                    return event.date >= today;
+                } else {
+                    return event.date < today;
+                }
+            });
+
+            // For upcoming, maybe show closest first (ascending)? But generally list sorted by date.
+            // If upcoming, reverse the sort to show soonest first if default was desc.
+            if (currentFilter === 'upcoming') {
+                filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<p class="text-center" style="grid-column: 1/-1;">No ${currentFilter} events found.</p>`;
+                return;
+            }
+
+            filtered.forEach(event => {
+                // Determine media content (Image or Video)
+                let mediaContent = '';
+                if (event.video_url) {
+                    // Simple check for YouTube embed vs direct file, for now assume direct or handled manually
+                    // If regular URL, maybe link to it. If it's a file path, video tag.
+                    // For simplicity in this demo, use image if available, else placeholder.
+                }
+
+                const imageSrc = event.image_url || 'https://images.unsplash.com/photo-1544367563-12123d832d34?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
+
+                const dateObj = new Date(event.date);
+                const dateStr = dateObj.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+                const div = document.createElement('div');
+                div.className = 'event-card';
+                div.innerHTML = `
+                    <div class="event-media">
+                        <img src="${imageSrc}" alt="${event.title}">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">${dateStr}</div>
+                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-location"><i class="fas fa-map-marker-alt"></i> ${event.location || 'Location TBD'}</div>
+                        <p class="event-desc">${event.description || ''}</p>
+                        ${event.video_url ? `<a href="${event.video_url}" target="_blank" class="btn btn-outline btn-sm event-btn"><i class="fas fa-play"></i> Watch Video</a>` : ''}
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+    </script>
+</body>
+
+</html>

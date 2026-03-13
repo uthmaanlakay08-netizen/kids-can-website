@@ -1,0 +1,35 @@
+{
+    "mission": "Kids-Can Cancer Foundation was born from a simple yet powerful belief: that no child should fight cancer alone, and no family should face the burden without support.",
+    "missionExtended": "We work tirelessly to provide financial assistance, emotional support, and resources to families affected by childhood cancer. From funding life-saving treatments to organizing joy-filled events that let kids just be kids, every action we take is driven by love and compassion.\n\nOur approach is holistic. We don't just focus on the illness; we focus on the child. We believe in the healing power of play, community, and hope.",
+    "values": [
+        {
+            "title": "Compassion",
+            "description": "We lead with empathy, understanding the unique challenges every family faces.",
+            "icon": "fas fa-heart"
+        },
+        {
+            "title": "Support",
+            "description": "In practical, financial, and emotional ways, we are there every step of the way.",
+            "icon": "fas fa-hand-holding-heart"
+        },
+        {
+            "title": "Community",
+            "description": "Building a network of care that surrounds families with strength.",
+            "icon": "fas fa-users"
+        }
+    ],
+    "gallery": [
+        {
+            "url": "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "alt": "Education and support"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "alt": "Kids playing"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+            "alt": "Charity event"
+        }
+    ]
+}

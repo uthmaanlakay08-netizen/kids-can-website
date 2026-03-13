@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Partner | Kids-Can Cancer Foundation</title>
+    <meta name="description"
+        content="Partner with Kids-Can to support children fighting cancer. Join our network of compassionate businesses and individuals.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+
+    <style>
+        .partner-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0 4rem;
+            color: white;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: #f8fafe;
+            border-radius: 10px;
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+                <div class="logo-tagline">be aware, show you care</div>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="stories.html" class="nav-link">Heroes</a></li>
+                <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="partner-header">
+        <div class="container">
+            <h1 class="section-title" style="color: white; margin-bottom: 0.5rem;">Partner With Us</h1>
+            <p style="font-size: 1.2rem;">Together we can make a bigger difference.</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="section-padding">
+        <div class="container">
+
+            <div class="text-center" style="max-width: 800px; margin: 0 auto 3rem;">
+                <h2 class="section-title">Why Become a Partner?</h2>
+                <p>Partnerships are the lifeblood of our operation. By joining forces with Kids-Can, you are directly
+                    contributing to life-saving treatments, support systems for families, and awareness campaigns that
+                    change lives.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-handshake benefit-icon"></i>
+                    <h3>Corporate Responsibility</h3>
+                    <p>Demonstrate your company's commitment to social good and community support.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-bullhorn benefit-icon"></i>
+                    <h3>Brand Visibility</h3>
+                    <p>Be recognized as a champion for children's health across our events and digital platforms.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-users benefit-icon"></i>
+                    <h3>Employee Engagement</h3>
+                    <p>Provide meaningful volunteering and engagement opportunities for your team.</p>
+                </div>
+            </div>
+
+            <div class="form-container" id="partnerFormContainer">
+                <h3 class="text-center" style="margin-bottom: 1.5rem;">Join Our Mission</h3>
+                <form id="partnerForm" onsubmit="submitPartnerForm(event)">
+                    <div class="form-group">
+                        <label for="name">Name / Company Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required
+                            placeholder="Enter your name or organization">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="0833529842">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How would you like to partner with us?</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" required
+                            placeholder="Tell us about your ideas, resources, or how you'd like to get involved..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem;">Send
+                        Message</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo footer-logo">
+                        <div class="logo-main">
+                            <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                        </div>
+                        <div class="logo-tagline">be aware, show you care</div>
+                    </a>
+                    <p>Dedicated to fighting children's cancer and supporting families in need.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="stories.html">Our Kids</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 0833529842</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kidscanfoundation/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kidscanfoundation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://za.linkedin.com/company/kids-can-cancer-foundation" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p>&copy; 2026 Kids-Can Cancer Foundation. All Rights Reserved.</p>
+                <a href="admin.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.8rem;">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        async function submitPartnerForm(e) {
+            e.preventDefault();
+
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Sending...';
+            btn.disabled = true;
+
+            const formData = new FormData(e.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                message: formData.get('message')
+            };
+
+            try {
+                if (!window.supabaseClient) throw new Error("Supabase client not initialized");
+
+                const { error } = await window.supabaseClient
+                    .from('partner_inquiries')
+                    .insert([data]);
+
+                if (error) throw error;
+
+                // Success
+                const container = document.getElementById('partnerFormContainer');
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                        <h3>Thank You!</h3>
+                        <p>We have received your message and will be in touch shortly.</p>
+                        <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1rem;">Send Another</button>
+                    </div>
+                `;
+
+            } catch (err) {
+                console.error("Error submitting form", err);
+                alert("Something went wrong. Please try again later.");
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

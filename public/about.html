@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Kids-Can Cancer Foundation</title>
+    <meta name="description"
+        content="Learn about Kids-Can Cancer Foundation, our mission, and see the impact we make in the lives of children fighting cancer.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0 4rem;
+            color: white;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .mission-values {
+            background-color: #f8fafe;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+                <div class="logo-tagline">be aware, show you care</div>
+            </a>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link active">About Us</a></li>
+                <li class="nav-item"><a href="stories.html" class="nav-link">Heroes</a></li>
+                <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="apply.html" class="nav-link">Get Help</a></li>
+                <li class="nav-item"><a href="donate.html" class="nav-link btn btn-primary"
+                        style="color: white; padding: 0.5rem 1.5rem;">Donate</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="section-title" style="color: white; margin-bottom: 0.5rem;">Who We Are</h1>
+        </div>
+    </section>
+
+    <!-- Mission & Story -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title">Our Mission</h2>
+                    <div id="missionContent">
+                        <!-- Loaded dynamically -->
+                        <p>Loading mission...</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Supporting families">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="mission-values section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">Our Core Values</h2>
+            <div class="impact-grid"> <!-- Reusing grid layout -->
+                <div class="value-card">
+                    <i class="fas fa-heart value-icon"></i>
+                    <h3>Compassion</h3>
+                    <p>We lead with empathy, understanding the unique challenges every family faces.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-hand-holding-heart value-icon"></i>
+                    <h3>Support</h3>
+                    <p>In practical, financial, and emotional ways, we are there every step of the way.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users value-icon"></i>
+                    <h3>Community</h3>
+                    <p>Building a network of care that surrounds families with strength.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center">See What We Do</h2>
+            <p class="text-center section-subtitle">Snapshots of hope, joy, and the difference we make together.</p>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo footer-logo">
+                        <div class="logo-main">
+                            <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                        </div>
+                        <div class="logo-tagline">be aware, show you care</div>
+                    </a>
+                    <p>Dedicated to fighting children's cancer and supporting families in need.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="stories.html">Our Kids</a></li>
+                        <li><a href="index.html#events">Events</a></li>
+                        <li><a href="https://givepulse.live/campaign-meta/26954841-f092-43aa-b14a-0d1ca01fe09c"
+                                target="_blank">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 0833529842</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kidscanfoundation/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kidscanfoundation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://za.linkedin.com/company/kids-can-cancer-foundation" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p>&copy; 2026 Kids-Can Cancer Foundation. All Rights Reserved.</p>
+                <a href="admin.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.8rem;">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const missionContainer = document.getElementById('missionContent');
+            const galleryGrid = document.getElementById('galleryGrid');
+
+            // Hardcoded fallback mission (in case DB is not yet set up)
+            const DEFAULT_MISSION = "Our mission is to bring hope, dignity, and support to children battling cancer by improving their quality of life and providing essential care. We do this by providing financial assistance for treatments, supplying essential care packages, and standing beside families throughout their journey.";
+
+            try {
+                const { data, error } = await window.supabaseClient
+                    .from('about_page')
+                    .select('*')
+                    .limit(1)
+                    .single();
+
+                // Clear any loading text
+                missionContainer.innerHTML = '';
+
+                if (error) {
+                    console.warn("CMS: Loading from DB failed, using default mission.", error.message);
+                    missionContainer.innerHTML = `<p>${DEFAULT_MISSION}</p>`;
+                    // No photos fallback
+                    galleryGrid.innerHTML = '<p class="text-center" style="grid-column: 1/-1;">Check back soon for photos of our recent work!</p>';
+                    return;
+                }
+
+                // If table is empty, handle gracefully
+                const aboutData = data || {};
+
+                // Populate Mission
+                if (aboutData.mission) {
+                    const p = document.createElement('p');
+                    p.innerText = aboutData.mission;
+                    missionContainer.appendChild(p);
+                } else {
+                    missionContainer.innerHTML = `<p>${DEFAULT_MISSION}</p>`;
+                }
+
+                if (aboutData.mission_extended) {
+                    const paragraphs = aboutData.mission_extended.split('\n\n');
+                    paragraphs.forEach(text => {
+                        const p = document.createElement('p');
+                        p.innerText = text;
+                        missionContainer.appendChild(p);
+                    });
+                }
+
+                // Populate Gallery
+                galleryGrid.innerHTML = '';
+                if (aboutData.gallery && aboutData.gallery.length > 0) {
+                    aboutData.gallery.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'gallery-item';
+                        div.innerHTML = `<img src="${item.url}" alt="${item.alt || 'Gallery Image'}">`;
+                        galleryGrid.appendChild(div);
+                    });
+                } else {
+                    galleryGrid.innerHTML = '<p class="text-center" style="grid-column: 1/-1;">Check back soon for photos of our recent work!</p>';
+                }
+
+            } catch (e) {
+                console.error("Failed to load about content", e);
+                missionContainer.innerHTML = `<p>${DEFAULT_MISSION}</p>`;
+            }
+        });
+    </script>
+</body>
+
+</html>

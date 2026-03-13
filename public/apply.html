@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Assistance | Kids-Can Cancer Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0 4rem;
+            color: white;
+            text-align: center;
+        }
+
+        .apply-container {
+            max-width: 800px;
+            margin: -4rem auto 5rem;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .form-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(60, 184, 77, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+                <div class="logo-tagline">be aware, show you care</div>
+            </a>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="stories.html" class="nav-link">Heroes</a></li>
+                <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                <li class="nav-item"><a href="apply.html" class="nav-link active">Get Help</a></li>
+                <li class="nav-item"><a href="donate.html" class="nav-link btn btn-primary"
+                        style="color: white; padding: 0.5rem 1.5rem;">Donate</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="section-title" style="color: white; margin-bottom: 0.5rem;">Get Help</h1>
+            <p class="hero-subtitle">We are here to support you through this journey.</p>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <div class="container">
+        <div class="apply-container">
+            <form id="applicationForm">
+                <div class="form-section">
+                    <h3>Guardian Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="guardianName" required placeholder="Parent or Legal Guardian">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="guardianEmail" required placeholder="email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="guardianPhone" required placeholder="0833529842">
+                        </div>
+                        <div class="form-group">
+                            <label>Relationship to Child</label>
+                            <select id="relationship" required>
+                                <option value="">Select...</option>
+                                <option value="Mother">Mother</option>
+                                <option value="Father">Father</option>
+                                <option value="Grandparent">Grandparent</option>
+                                <option value="Legal Guardian">Legal Guardian</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Child Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Child's Full Name</label>
+                            <input type="text" id="childName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Child's Age</label>
+                            <input type="number" id="childAge" required>
+                        </div>
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>Diagnosis / Medical Condition</label>
+                            <input type="text" id="diagnosis" required placeholder="Brief description of the condition">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Request Details</h3>
+                    <div class="form-group">
+                        <label>Type of Assistance Needed</label>
+                        <select id="assistanceType" required>
+                            <option value="">Select...</option>
+                            <option value="Medical Treatment">Financial Assistance for Treatment</option>
+                            <option value="Care Package">Care Packages & Essentials</option>
+                            <option value="Emotional Support">Counseling & Emotional Support</option>
+                            <option value="Educational Support">Educational Grants & Tutoring</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>How can we help? (Details)</label>
+                        <textarea id="requestDetails" rows="4" required
+                            placeholder="Please describe your situation and how we can best support you..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">Submit Application</button>
+                <p class="text-center" style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;">
+                    Your information is kept strictly confidential and secure.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo footer-logo">
+                        <div class="logo-main">
+                            <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                        </div>
+                        <div class="logo-tagline">be aware, show you care</div>
+                    </a>
+                    <p>Dedicated to fighting children's cancer and supporting families in need.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="stories.html">Our Kids</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 0833529842</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/kidscanfoundation/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/kidscanfoundation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://za.linkedin.com/company/kids-can-cancer-foundation" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p>&copy; 2026 Kids-Can Cancer Foundation. All Rights Reserved.</p>
+                <a href="admin.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.8rem;">Admin Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script>
+        document.getElementById('applicationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            btn.disabled = true;
+
+            const formData = {
+                guardian_name: document.getElementById('guardianName').value,
+                guardian_email: document.getElementById('guardianEmail').value,
+                guardian_phone: document.getElementById('guardianPhone').value,
+                relationship: document.getElementById('relationship').value,
+                child_name: document.getElementById('childName').value,
+                child_age: parseInt(document.getElementById('childAge').value),
+                diagnosis: document.getElementById('diagnosis').value,
+                assistance_type: document.getElementById('assistanceType').value,
+                details: document.getElementById('requestDetails').value,
+                status: 'Pending'
+            };
+
+            try {
+                if (!window.supabaseClient) throw new Error("Supabase client not initialized.");
+
+                const { error } = await window.supabaseClient.from('applications').insert([formData]);
+                if (error) throw error;
+
+                alert("Application submitted successfully! We will be in touch soon.");
+                window.location.href = 'index.html';
+            } catch (err) {
+                console.error("Submission Error:", err);
+                alert("Error submitting application: " + err.message);
+                btn.innerHTML = 'Submit Application';
+                btn.disabled = false;
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

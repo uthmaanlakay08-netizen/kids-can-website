@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | Kids-Can Cancer Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 80vh;
+        }
+
+        .sidebar {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .main-content {
+            padding: 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .table-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            color: var(--text-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .status-pending {
+            background: #fff8e1;
+            color: #ffa000;
+        }
+
+        .status-approved {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Simple Top Nav -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-main">
+                    <i class="fas fa-check-circle logo-icon"></i> Kids-Can
+                </div>
+            </a>
+            <div class="user-profile" style="display: flex; align-items: center; gap: 1rem;">
+                <span id="userNameDisplay">Welcome, User</span>
+                <a href="#" class="btn btn-outline-dark" style="padding: 0.4rem 1rem;">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-th-large"></i> Overview</a></li>
+                <li><a href="apply.html"><i class="fas fa-file-alt"></i> New Application</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> My Donations</a></li>
+                <li><a href="#"><i class="fas fa-user-edit"></i> Profile Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="section-title">User Dashboard</h1>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="appCount">0</h3>
+                    <p>Applications</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="donationTotal">R 0</h3>
+                    <p>Total Donated</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <h3>My Applications</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Child Name</th>
+                            <th>Date Submitted</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appTableBody">
+                        <!-- Rows loaded via JS -->
+                        <tr>
+                            <td colspan="4" class="text-center">Loading applications...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script>
+        // Placeholder for real auth logic
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (!window.supabaseClient) return;
+
+            // Fetch applications for current user (placeholder email check)
+            const userEmail = localStorage.getItem('userEmail') || 'test@example.com';
+
+            const { data: apps, error } = await window.supabaseClient
+                .from('applications')
+                .select('*')
+                .eq('guardian_email', userEmail);
+
+            const tbody = document.getElementById('appTableBody');
+            tbody.innerHTML = '';
+
+            if (apps && apps.length > 0) {
+                document.getElementById('appCount').innerText = apps.length;
+                apps.forEach(app => {
+                    const date = new Date(app.created_at).toLocaleDateString();
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${app.child_name}</td>
+                        <td>${date}</td>
+                        <td>${app.assistance_type}</td>
+                        <td><span class="status-badge status-${app.status.toLowerCase()}">${app.status}</span></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } else {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-center">No applications found.</td></tr>';
+            }
+        });
+    </script>
+</body>
+
+</html>

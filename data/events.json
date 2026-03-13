@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Padel For Purpose 2026",
+        "date": "2026-04-15",
+        "location": "Cape Town Padel Center",
+        "description": "Join us for our annual charity padel tournament. All proceeds go to the foundation."
+    },
+    {
+        "id": 2,
+        "title": "Gala Dinner",
+        "date": "2026-06-20",
+        "location": "Mount Nelson Hotel",
+        "description": "An evening of elegance and giving. Auction, dinner, and stories of hope."
+    },
+    {
+        "id": 3,
+        "title": "Fun Run 5K",
+        "date": "2026-09-10",
+        "location": "Green Point Park",
+        "description": "Run, walk, or roll with us to raise awareness for childhood cancer."
+    }
+]
